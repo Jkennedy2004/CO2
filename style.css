@@ -187,7 +187,7 @@ input[type="range"]::-moz-range-thumb {
 
 .visualization-content {
   width: 100%;
-  max-width: 3000px;           /* más pequeño */
+  max-width: 2500px;           /* más pequeño */
   margin: 0 auto;
   padding: 10px;
 }

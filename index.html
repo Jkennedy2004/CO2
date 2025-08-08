@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Historia del Clima: Un Viaje a Través de los Datos</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <section id="intro" class="intro-section">
+            <h1>La Historia del Clima a Través de los Datos</h1>
+            <p class="lead-paragraph">Todo comienza con una pregunta: ¿cómo llegamos hasta aquí? Este viaje visual busca
+                contar la historia del clima a través de hechos, cifras y patrones que, juntos, revelan el relato de
+                nuestra relación con el planeta. A medida que avances, irás descubriendo cómo nuestras acciones han
+                dejado una huella profunda en la atmósfera. </p>
+            <p>Antes de sumergirnos en los detalles, observamos cuatro señales claves del estado actual del mundo. Son
+                cifras que nos ayudan a tomar conciencia del punto en el que nos encontramos: la cantidad de gases que
+                emitimos, el cambio de temperatura global, la concentración de metano y el número de personas que
+                compartimos este planeta.</p>
+
+            <h3>Indicadores Clave del Problema (2021)</h3>
+            <p>A continuación, un vistazo rápido a 4 de los 10 indicadores clave que resumen el estado del mundo en el
+                último año con datos completos disponibles. Estos valores nos dan el contexto necesario para comprender
+                la magnitud del desafío climático actual.</p>
+
+            <div class="kpi-container">
+                <div class="kpi-box">
+                    <div class="kpi-value" id="kpi-co2-total">...</div>
+                    <div class="kpi-label">Emisiones Globales de CO2 (kt)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-value" id="kpi-temp-change">...</div>
+                    <div class="kpi-label">Cambio de Temperatura Promedio (°C)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-value" id="kpi-ch4-total">...</div>
+                    <div class="kpi-label">Emisiones Globales de CH4 (kt)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-value" id="kpi-population-total">...</div>
+                    <div class="kpi-label">Población Global Total</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-1" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>Un Punto de Quiebre en la Historia</h2>
+                    <p>Si observamos el pasado, veremos una línea que parecía estable… hasta que algo cambió. Durante
+                        décadas, las emisiones globales de CO₂ fueron casi insignificantes. Pero en el siglo XX, la
+                        curva comenzó a subir rápidamente.</p>
+                    <p>Ese momento marca lo que muchos llaman “el gran acelerón”: la industrialización, el auge de los
+                        combustibles fósiles y el crecimiento económico sin precedentes. Todo ello impulsó nuestras
+                        emisiones a niveles nunca antes vistos. Es una pendiente que no se detiene, y su inclinación nos
+                        habla de un presente que ya no puede ignorarse.</p>
+                    <div class="kpi-container">
+                        <div class="kpi-box">
+                            <div class="kpi-value" id="kpi-emissions-increase">...</div>
+                            <div class="kpi-label">Aumento de Emisiones Globales desde 1980</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visualization-content">
+                    <div id="lineChart" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-2" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>Las Raíces del Problema</h2>
+                    <p>Pero ¿de dónde proviene todo ese CO₂? Las respuestas están bajo nuestros pies, en los pozos y
+                        minas: carbón, petróleo y gas. Estas fuentes, que nos han dado energía y progreso, también han
+                        liberado millones de toneladas de gases contaminantes.</p>
+                    <p>Durante la Revolución Industrial, el carbón fue el rey. Más tarde, el petróleo y el gas
+                        impulsaron vehículos, ciudades y tecnologías. Hoy, seguimos dependiendo de ellos. La huella que
+                        han dejado es visible, profunda y persistente.</p>
+                    <div class="kpi-container">
+                        <div class="kpi-box">
+                            <div class="kpi-value" id="kpi-coal-percent">...</div>
+                            <div class="kpi-label">% de CO2 del Carbón (2021)</div>
+                        </div>
+                        <div class="kpi-box">
+                            <div class="kpi-value" id="kpi-oil-gas-percent">...</div>
+                            <div class="kpi-label">% de CO2 de Petróleo y Gas (2021)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visualization-content">
+                    <div id="stackedAreaChart" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-3" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>Un Mundo de Desigualdades</h2>
+                    <p>No todos contribuimos por igual. Al observar el planeta por persona, vemos una gran disparidad.
+                        Algunos países emiten enormes cantidades de CO₂ por habitante, mientras que otros casi no dejan
+                        rastro.</p>
+                    <p>Durante muchos años, las naciones industrializadas lideraron esta carga. Pero hoy, economías
+                        emergentes han empezado a ocupar su lugar en el podio de las emisiones. Comprender esta
+                        desigualdad es clave para construir soluciones justas.</p>
+                    <p><b>*Usa la barra de abajo para explorar cómo las emisiones han cambiado a lo largo de los
+                            años.*</b></p>
+                    <div class="controls">
+                        <label for="mapYearRange">Año: <span id="mapCurrentYearDisplay">2000</span></label>
+                        <input type="range" id="mapYearRange" min="1980" max="2021" value="2000">
+                    </div>
+                </div>
+                <div class="visualization-content">
+                    <div id="choroplethMap" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-4" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>Los Mayores Actores</h2>
+                    <p>En este punto de la historia, unos pocos países concentran la mayor parte de las emisiones
+                        totales. No se trata solo de cantidad, sino de influencia en el curso del cambio climático.</p>
+                    <p>Algunos lideran en volumen absoluto; otros, en huella por persona. Ambos datos nos muestran
+                        distintas caras de una misma realidad: un pequeño grupo con gran responsabilidad en el
+                        calentamiento global.</p>
+                    <div class="kpi-container">
+                        <div class="kpi-box">
+                            <div class="kpi-value" id="kpi-major-country">...</div>
+                            <div class="kpi-label">Principal Emisor Total (2021)</div>
+                        </div>
+                        <div class="kpi-box">
+                            <div class="kpi-value" id="kpi-percapita-country">...</div>
+                            <div class="kpi-label">Mayor Emisor Per Cápita (2021)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visualization-content">
+                    <div id="topEmittingCountries" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-5" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>El Vínculo Irrefutable</h2>
+                    <p>Hay quienes dudan, pero los datos hablan por sí solos. Este gráfico revela cómo los países con
+                        mayores emisiones por habitante suelen experimentar los mayores aumentos de temperatura.</p>
+                    <p>Una correlación clara entre causa y efecto. No es coincidencia. Es ciencia, y es la consecuencia
+                        directa de nuestras decisiones energéticas.</p>
+                    <div class="controls">
+                        <label for="scatterCountrySelect">Seleccionar país:</label>
+                        <select id="scatterCountrySelect">
+                            <option value="all">Todos</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="visualization-content">
+                    <div id="scatterPlot" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-6" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>Cada Huella Tiene su Propia Forma</h2>
+                    <p>No todos contaminamos de la misma manera. Al mirar dentro de cada país, descubrimos un perfil
+                        único de emisiones. Algunas naciones dependen más del carbón; otras del gas o del petróleo.</p>
+                    <p>Explora libremente y descubre cómo se compone la huella de carbono de cada nación. Sus fuentes de
+                        energía hablan de su historia, su economía y sus decisiones pasadas.</p>
+                    <p><b>*Usa el selector de abajo para ver las fuentes de cada país.*</b></p>
+                    <div class="controls">
+                        <label for="sourceSelector">Ver fuentes para:</label>
+                        <select id="sourceSelector"></select>
+                    </div>
+                </div>
+                <div class="visualization-content">
+                    <div id="sourceChart" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-7" class="story-section">
+            <div class="section-content">
+                <div class="text-content">
+                    <h2>La Luz al Final del Camino</h2>
+                    <p>Entre tanta preocupación, hay esperanza. Las energías renovables han comenzado a escribir un
+                        nuevo capítulo. En las últimas décadas, su crecimiento ha sido notable.</p>
+                    <p>Sol, viento y agua están ganando terreno. La transición energética ya está en marcha. Y cada
+                        nuevo panel solar o turbina eólica representa un paso más hacia un futuro más limpio y justo.
+                    </p>
+                    <div class="kpi-container">
+                        <div class="kpi-box">
+                            <div class="kpi-value" id="kpi-renewable-energy">...</div>
+                            <div class="kpi-label">Producción Global de Energía Renovable (kt)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visualization-content">
+                    <div id="renewableLineChart" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="story-section">
+            <div class="text-content" style="text-align: center;">
+                <h2>Una Historia que Aún Podemos Reescribir</h2>
+                <p class="lead-paragraph">Los datos son más que números. Son señales, advertencias y oportunidades. Nos
+                    muestran el impacto de nuestras decisiones, pero también el poder que tenemos para cambiar el rumbo.
+                </p>
+                <p>Esta historia no está terminada. El futuro depende de nosotros, de lo que elijamos hacer con el
+                    conocimiento que hoy poseemos. Y aunque el desafío es grande, también lo es la esperanza.</p>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="text-content" style="font-size: 0.85rem; color: #777;">
+                <p><em>* Las visualizaciones presentadas en esta historia están construidas a partir de datos de acceso
+                        abierto obtenidos de fuentes como <strong>Our World in Data</strong>, <strong>World
+                            Bank</strong>, y <strong>Global Carbon Project</strong>. Las cifras están expresadas en
+                        miles de toneladas (kt) y corresponden al año más reciente disponible (2021). Esta narrativa
+                        busca representar una visión global basada en datos científicos y actualizados.</em></p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
